@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[Catchy and Engaging Title]</title>
+    <title>Procedural Terrain Generation</title>
     <style>
         body {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -48,46 +48,179 @@
             border-radius: 8px;
             margin-top: 20px;
         }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 20px;
+            margin: 20px auto; 
+        }
+
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            color: #888;
+        }
+
+        .back-to-top {
+            display: block;
+            background-color: #3d3d3d;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+            margin: 20px auto; 
+        }
     </style>
 </head>
 <body>
 
 
     <header>
-        <h1>Runner</h1>
-        <p><strong>By Saif Jouda | Feb. 6 2024</strong></p>
+        <h1>Procedural Terrain Generation</h1>
+        <p><strong>By Saif Jouda | Feb. 8 2024</strong></p>
     </header>
 
     <section>
         <h2>Introduction</h2>
-        <p>[Provide a brief introduction to the topic and why it is relevant or interesting to the reader. Hook them with a compelling opening.]</p>
+        <p>Procedural terrain generation is a powerful technique used to create vast and realistic landscapes dynamically. 
+            In Unity, developers can leverage various algorithms and methods to generate terrains that provide a diverse and immersive experience for players. 
+            This article explores one of the many ways procedural terrain generation is created, and will focus on essential concepts and techniques.</p>
     </section>
 
     <section>
-        <h2>Section 1: Overview</h2>
-        <p>[Give a high-level overview of the subject matter. Provide context and background information to set the stage for the reader.]</p>
+        <h2>Interactable</h2>
+        
+        
+        <canvas id="unity-canvas" width=960 height=600 style="width: 960px; height: 600px; background: #231F20"></canvas>
+        <script src="Builds\ProceduralTerrainBuild\WebBuild.loader.js"></script>
+        <script>
+        if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+            // Mobile device style: fill the whole browser client area with the game canvas:
+            var meta = document.createElement('meta');
+            meta.name = 'viewport';
+            meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
+            document.getElementsByTagName('head')[0].appendChild(meta);
+
+            var canvas = document.querySelector("#unity-canvas");
+            canvas.style.width = "100%";
+            canvas.style.height = "100%";
+            canvas.style.position = "fixed";
+
+            document.body.style.textAlign = "left";
+        }
+
+        createUnityInstance(document.querySelector("#unity-canvas"), {
+            dataUrl: "Build/WebBuild.data",
+            frameworkUrl: "Build/WebBuild.framework.js",
+            codeUrl: "Build/WebBuild.wasm",
+            streamingAssetsUrl: "StreamingAssets",
+            companyName: "DefaultCompany",
+            productName: "TerrainGenerator",
+            productVersion: "0.1",
+            // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+            // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+        });
+        </script>
+
+
     </section>
 
     <section>
-        <h2>Section 2: Importance of [Topic]</h2>
-        <p>[Explain why the topic is significant or relevant. Discuss its impact on individuals, society, or a specific industry.]</p>
-    </section>
-
-    <section>
-        <h2>Section 3: Key Concepts</h2>
-        <p>[Break down the main concepts related to the topic. Use subheadings if necessary to organize information.]</p>
+        <h2>Section 1: Vertices and Meshes</h2>
+        <p>In procedural terrain generation, vertices play a crucial role in defining the shape and structure of the terrain mesh. Vertices are points in 3D space that, when connected, form the triangles that make up the terrain's surface. The strategic placement and manipulation of these vertices are key to achieving realistic and visually appealing terrains.</p>
 
         <section>
-            <h3>Subsection 3.1: [Concept 1]</h3>
-            <p>[Provide detailed information about the first key concept. Use examples, statistics, or anecdotes to support your points.]</p>
+            <h3>1.1 Poisson Disk Sampling</h3>
+            <p>Poisson Disk Sampling is an algorithm used to distribute vertices evenly across the x and z position. By ensuring a minimum distance between points, Poisson Disk Sampling prevents clustering and results in a more natural-looking mesh. This technique is particularly effective in creating diverse landscapes with well-distributed features.</p>
+            
+            <figure>
+                <img src="images\randomVSpoisson.png" alt="Poisson Disk Sampling Example">
+                <figcaption class="image-caption">Figure 1.1: Random vs Poisson Disk Sampling</figcaption>
+            </figure>
         </section>
 
         <section>
-            <h3>Subsection 3.2: [Concept 2]</h3>
-            <p>[Repeat the process for the second key concept.]</p>
+            <h3>1.2 Perlin Noise</h3>
+            <p>Perlin Noise is a gradient noise function that is widely used in procedural terrain generation to set the vertices y position. By applying Perlin Noise to the terrain's vertices, developers can create natural-looking features like mountains, valleys, and other complex landscapes. The smooth, continuous variations produced by Perlin Noise contribute to the overall realism of the generated terrain.</p>
+
+            <figure>
+                <img src="images\perlin.png" alt="Poisson Disk Sampling Example">
+                <figcaption class="image-caption">Figure 1.2: Perlin Noise</figcaption>
+            </figure>
         </section>
 
     </section>
+
+    <section>
+        <h2>Section 2: Triangulation for Mesh Construction</h2>
+        <p>Once vertices are strategically placed, the next step in procedural terrain generation involves the construction of a mesh. Triangulation is a crucial process where these vertices are connected to form triangles, creating the mesh structure of the terrain. Efficient triangulation algorithms ensure that the resulting mesh is well-defined, providing a foundation for realistic and visually appealing terrains.</p>
+    
+        <section>
+            <h3>2.1 Delaunay Triangulation</h3>
+            <p>Delaunay Triangulation, also known as a Delone triangulation, is a widely-used algorithm that connects vertices in a way that maximizes triangle quality. The key criterion is ensuring that no vertex lies inside the circumcircle of any triangle in the mesh, producing well-shaped triangles. This method is highly effective in procedural terrain generation, creating smooth and aesthetically pleasing landscapes.</p>
+
+            <h4>How Delaunay Triangulation Works</h4>
+            <p>Delaunay Triangulation operates by iteratively adding vertices to the mesh while maintaining the Delaunay criterion. The algorithm dynamically adjusts the connections between vertices, creating a triangulated mesh that conforms to the input point distribution. This process is fundamental to generating realistic terrains with a natural flow.</p>
+
+            <!-- Image Placeholder for Delaunay Triangulation with Reference -->
+            <figure>
+                <img src="images\Delaunay.png" alt="Delaunay Triangulation Example">
+                <figcaption class="image-caption">Figure 2.1: Delaunay Triangulation Example With Circumcircles Showing</figcaption>
+            </figure>
+        </section>
+
+    
+    </section>
+
+    <section>
+        <h2>Section 3: Coloring the Terrain</h2>
+        <p>The final step is to color the terrain. This step adds visual appeal and realism to the generated landscape. One effective way to color the terrain is by using a gradient based on the average height of the vertices.</p>
+
+        <section>
+            <h3>3.1 Height Driven Gradient</h3>
+            <p>The terrain can be colored using a gradient that represents different elevations. By first calculating the average height of all the vertices, each triangle can be colored based on its position to the average height. This technique creates a smooth transition of colors across the terrain, simulating natural variations in elevation.</p>
+        </section>
+
+
+    </section>
+
+    <section>
+        <h2>Section 4: Helpful Links</h2>
+        
+
+
+    </section>
+
+    
+    <button class="back-to-top" onclick="scrollToTop()">Back to Top</button>
+
+    <script>
+        // Function to scroll to the top of the page
+        function scrollToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+        // Show or hide the "Back to Top" button based on scroll position
+        window.onscroll = function () {
+            showBackToTopButton();
+        };
+
+        function showBackToTopButton() {
+            var button = document.querySelector('.back-to-top');
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                button.style.display = 'block';
+            } else {
+                button.style.display = 'none';
+            }
+        }
+    </script>
+    
 
 </body>
 </html>
