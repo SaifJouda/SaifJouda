@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procedural Terrain Generation</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        header {
+            background-color: #f5f5f5; /* Change the color here */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin: 20px 0;
+            color: #333;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin: 20px 0;
+            color: #333;
+        }
+
+        p,ol {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        ul {
+            font-size: 1.0em;
+        }
+
+        li {
+            margin-bottom: 0px;
+        }
+
+        section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 20px;
+            margin: 20px auto; 
+        }
+
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            color: #888;
+        }
+
+        .back-to-top {
+            display: block;
+            background-color: #3d3d3d;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+            margin: 20px auto; 
+        }
+    </style>
+</head>
+<body>
+
+
+    <header>
+        <h1>Lenstra Elliptic-Curve Factorization</h1>
+        <p><strong>By Saif Jouda | Feb. 11 2024</strong></p>
+    </header>
+
+    <section>
+        <h2>Introduction</h2>
+        <p>Decomposing a number into its prime factors has posed a longstanding challenge in computer science and cryptography. Over time, various algorithms have been devised to address this concern, however, 
+            there remains no efficient non-quantum method for factoring sufficiently large numbers. Among the arsenal of factorization algorithms, Lenstra's algorithm stands out as one of the most rapid and effective techniques. 
+            This algorithm leverages the power of elliptic curves, introducing a sub-exponential running time that significantly enhances its efficiency. 
+            The time complexity of this algorithm depends on the size of the smallest prime factor of the number.</p>
+
+        <section>
+            <h3>Why Factor?</h3>
+            <p>
+                Factoring large numbers is fundamental to the security of the widely used RSA (Rivest–Shamir–Adleman) public-key cryptosystem. 
+                The security of RSA relies on the difficulty of factoring the product of two large prime numbers. 
+                If factoring becomes efficient, it could compromise the security of encrypted communications.
+            </p>
+        </section>
+
+        <section>
+            <h3>How common is RSA used?</h3>
+            <p>
+                As of today, RSA remains a widely used encryption algorithm in various applications. It is used in email encryption, digital signitures, VPN protocols, certificate authorities and file encryption. 
+                In fact, you are likely utilizing RSA encryption right now. If you look at the link of this article, you will notice a 'https://' indicating that the connection between your browser and the website is secured through SSL/TLS protocols. 
+                These protocols often involve RSA encryption during the key exchange phase for securing communication.
+            </p>
+        </section>
+    </section>
+
+    <section>
+        <h2>Interactable</h2>
+        
+        
+        <iframe src="Builds\ProceduralTerrainBuild\index.html" width="800" height="600" scrolling="no" hideFooter=true ></iframe>
+
+
+    </section>
+
+
+    <section>
+        <h2>Section 1: Lenstra's Algorithm</h2>
+        
+    <section>
+        <h3>1.1 Overview</h3>
+        <p>
+            Lenstra's Algorithm, developed by Dutch mathematician Hendrik Lenstra, presents a significant advancement in integer factorization. 
+            As mentioned previously, the algorithm leverages the mathematical properties of elliptic curves to efficiently factorize composite numbers, making it particularly valuable for scenarios where other traditional methods face challenges.
+            <br><br>At its core, Lenstra's Algorithm employs the principles of elliptic curve factorization. 
+            It capitalizes on the group structure of points on elliptic curves over finite fields. 
+            <br><br>The algorithm's effectiveness lies in its ability to exploit the inherent structure of certain composite numbers, rendering them susceptible to efficient factorization using elliptic curves.
+            One key feature of Lenstra's Algorithm is its adaptability to different types of numbers. 
+        </p>
+    </section>
+
+    <section>
+        <h3>1.2 The Algorithm (Simplified)</h3>
+        <ol>
+            
+            <li>Initialization:</li>
+            <ul>
+            <li>Begin with a randomly selected point on the elliptic curve.</li>
+            <li>Set up initial parameters for the algorithm.</li>
+            </ul>
+
+            <li>Iteration:</li>
+            <ul>
+                <li>Employ a series of mathematical operations on the chosen point to generate a sequence of points on the elliptic curve.</li>
+                <li>Apply a set of rules that determine the progression of points.</li>
+            </ul>
+
+            <li>Factor Detection:</li>
+            <ul><li>During the iteration, if a certain condition is met (such as finding a point with zero y-coordinate or a specific relationship), a factor of the composite number is likely discovered.</li></ul>
+            
+
+            <li>Repeat or Adjust:</li>
+            <ul>
+                <li>If a factor is not found, repeat the iteration with a different starting point or adjust algorithm parameters.</li>
+                <li>Continue until a factor is successfully identified or the algorithm determines its inability to find one.</li>
+            </ul>
+            
+        </ol>
+
+    </section>
+           
+            <iframe src="https://github.com/SaifJouda/EllipticFactorizer" width="600" height="400" frameborder="0"></iframe>
+
+    
+    </section>
+
+    <section>
+        <h2>Algorithm Implmentation in C#</h2>
+        <section>
+            <h3>Main Algorithm: </h3>
+            <strong>LenstraFactor(n):</strong>
+            <p>Finds and returns a prime factor of the long integer n, by using the algorithm below.</p>
+
+            <ol>
+            <li>
+                The algorithm begins by creating a random elliptic curve over Z/nZ by choosing random values of the form 𝑦² = 𝑥³ + 𝑎𝑥 + 𝑏 (𝑚𝑜𝑑 𝑛).
+                <ol type="a">
+                <li>The algorithm then checks if the GCD of 4𝑎³ + 27𝑏² and n is greater than 1, if it is, then we have found a prime factor, and we are done. If not, then the algorithm continues.</li>
+                </ol>
+            </li>
+            <li>The algorithm creates a list of primes, up to a limit.</li>
+            <li>
+                The algorithm then computes [k]P on the elliptic curve (mod n) where k is the product of small primes.
+                <ol type="a">
+                <li>Constantly check the GCD of the y and n for each multiple of P, if it is not equal to 1, then we have found a prime factor.</li>
+                </ol>
+            </li>
+            <li>If no primes are found before the limit is reached, then a new elliptic curve over Z/nZ is chosen, and the algorithm repeats.</li>
+            <li>
+                The algorithm will only repeat up to a limit, if the limit is reached, then it will end and return no factor.
+            </li>
+            </ol>
+
+            <h3>Helper Functions:</h3>
+
+            <p><strong>GCD(a, b):</strong><br> The GCD function uses the Euclidean Algorithm to find the greatest common divisor of an input of long integers a and b.</p>
+
+            <p><strong>primeSieve(n) (Pauli n.d.):</strong><br> Uses the Sieve of Eratosthenes to create a list of prime numbers up to a limit.</p>
+
+            <p><strong>modInverse(a, b):</strong><br> Calculates the modular inverse of a number a with modulo b. This is only to help divide numbers over modulo m to help calculate lambda when adding different elliptic points.</p>
+
+            <p><strong>elpAdd(...):</strong><br> Adds two elliptic points together.</p>
+
+            <p><strong>elpMult(k, p, a, m):</strong><br> Adds the point P by itself k amount of times.</p>
+
+            <p><strong>randLong(n):</strong><br> Creates two random int numbers and then combines them to create a random long number (Reason: To support larger numbers to factor, Long datatypes are used instead of int datatypes. However, only random int numbers can be generated. Thus two int are created then combined).</p>
+
+            <p><strong>returnFactors(n):</strong><br> Calls the main algorithm to factor n. If the algorithm doesn’t find a factor, it calls it again to create a different curve and starting point, up to a limit. If it finds a factor, it displays the factors along with the number of elliptical curves created.</p>
+
+            <p><strong>menu():</strong><br> An interface that takes in a user input and calls the returnFactors function to perform the algorithm. It then displays the result along with the amount of time it took to calculate in milliseconds (performance varies along different devices).</p>
+
+        </section>
+
+       
+    </section>
+
+    <section>quatum computing and fute of cryptography, with quantum computing, encryption algortims more secure, quantum is danger to all internet</section>
+
+
+
+    <button class="back-to-top" onclick="scrollToTop()">Back to Top</button>
+
+    <script>
+        // Function to scroll to the top of the page
+        function scrollToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+        // Show or hide the "Back to Top" button based on scroll position
+        window.onscroll = function () {
+            showBackToTopButton();
+        };
+
+        function showBackToTopButton() {
+            var button = document.querySelector('.back-to-top');
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                button.style.display = 'block';
+            } else {
+                button.style.display = 'none';
+            }
+        }
+    </script>
+    
+
+</body>
+</html>
