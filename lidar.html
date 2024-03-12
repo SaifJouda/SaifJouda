@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Navigation</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        header {
+            background-color: #f5f5f5; /* Change the color here */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin: 20px 0;
+            color: #333;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin: 20px 0;
+            color: #333;
+        }
+
+        p,ol {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        ul {
+            font-size: 1.0em;
+        }
+
+        li {
+            margin-bottom: 0px;
+        }
+
+        section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 20px;
+            margin: 20px auto; 
+        }
+
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            color: #888;
+        }
+
+        .back-to-top {
+            display: block;
+            background-color: #3d3d3d;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+            margin: 20px auto; 
+        }
+    </style>
+</head>
+<body>
+
+
+    <header>
+        <h1>LiDAR in Unity</h1>
+        <p><strong>By Saif Jouda | March 12 2024</strong></p>
+    </header>
+
+    <section>
+        <h2>Introduction</h2>
+        <section>
+            <h3>What is LiDAR?</h3>
+            <p>Lidar, which stands for Light Detection and Ranging, is a remote sensing technology that uses laser light to measure distances and generate precise, three-dimensional information about the shape and characteristics of objects in its field of view. 
+                Lidar systems typically consist of a laser scanner, a GPS receiver, and an inertial navigation system.</p>
+        </section>
+
+        <section>
+            <h3>How does it work?</h3>
+            <p>
+                LiDAR works by emitting laser pulses towards a target area and measuring the time it takes for the reflected light to return. 
+                By calculating the round-trip travel time and knowing the speed of light, LiDAR systems can accurately determine the distance to objects.</p>
+                <img src="images\LiDAR-plane.png" alt="Lidar plane">
+        </section>
+        
+    </section>
+
+    <section>
+        <h1>Interactable</h1>
+        <iframe src="Builds\Lidar\index.html" width="800" height="600" scrolling="no" hideFooter=true ></iframe>
+        <section>
+            <h2>Download the full project here:</h2>
+            <a href="https://github.com/SaifJouda/Lidar"><img src="https://gh-card.dev/repos/SaifJouda/Lidar.svg"></a>
+        </section>
+    </section>
+
+    <section>
+        <h2>Implementation</h2>
+        <ol>
+            <li>Shoot a projectile (laser) with velocity <b>v</b> and destroy it upon impact</li>
+            <img src="images\projectileShot.gif" alt="projectile shot gif">
+
+            <li>Calculate time on impact <b>t</b></li>
+            <img src="images\calcTime.gif" alt="time gif">
+
+            <li>Calculate the distance with the fomula <b>d=v*t*a</b> where <b>a</b> is a constant for transforming Unity units into the desired measuring system. This constant will differ based on the scale of the world.</li>
+            <img src="images\calcDistance.gif" alt="distance gif">
+        </ol>
+
+        Note: For best accuracy, make sure you set the projectile's collision detection to continuous.
+    </section>
+
+
+
+
+    
+
+
+    <button class="back-to-top" onclick="scrollToTop()">Back to Top</button>
+
+    <script>
+        // Function to scroll to the top of the page
+        function scrollToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+        // Show or hide the "Back to Top" button based on scroll position
+        window.onscroll = function () {
+            showBackToTopButton();
+        };
+
+        function showBackToTopButton() {
+            var button = document.querySelector('.back-to-top');
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                button.style.display = 'block';
+            } else {
+                button.style.display = 'none';
+            }
+        }
+    </script>
+    
+
+</body>
+</html>
