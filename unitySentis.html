@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Navigation</title>
+    <link rel="stylesheet" href="css/blog.css">
+</head>
+<body>
+
+
+    <header>
+        <h1>Unity Sentis</h1>
+        <p><strong>By Saif Jouda | April. 2 2024</strong></p>
+    </header>
+
+    <section>
+        <h2>What is Unity Sentis?</h2>
+        <p>Sentis is a neural network interface library for unity. It allows pre-trained AI models, in the form of ONNX files, to execute during runtime. As of today, Unity Sentis is still an experimental package.</p>
+
+        <h2>Utilization</h2>
+        <p>There are numerous use cases for Unity Sentis, and we anticipate more emerging in the future. Here are a few examples:</p>
+        <ul>
+            <li>
+                <strong>Object identification</strong>
+                <p>Detect, classify, and segment objects with an in-game or on-device camera.</p>
+            </li>
+            <li>
+                <strong>AI opponents</strong>
+                <p>Power a board game opponent with specific rules and custom difficulty curves. Run a neural network trained on the game rules and determine game win probabilities after each move.</p>
+            </li>
+            <li>
+                <strong>Handwriting detection</strong>
+                <p>Identify handwritten numbers, letters, and symbols for unique gameplay interactions.</p>
+            </li>
+            <li>
+                <strong>Depth estimation</strong>
+                <p>Estimate the depth of real-world objects in an augmented reality view to occlude objects in a game scene.</p>
+            </li>
+            <li>
+                <strong>Speech recognition</strong>
+                <p>Convert live speech to in-game text using a machine learning language model for natural language interactions between players.</p>
+            </li>
+            <li>
+                <strong>Smart NPCs</strong>
+                <p>Automate dialogue and create meaningful interactions between players and NPCs without the limitations of manual scripting.</p>
+            </li>
+        </ul>
+
+        
+    </section>
+
+    
+
+
+    <button class="back-to-top" onclick="scrollToTop()">Back to Top</button>
+
+    <script>
+        // Function to scroll to the top of the page
+        function scrollToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+        // Show or hide the "Back to Top" button based on scroll position
+        window.onscroll = function () {
+            showBackToTopButton();
+        };
+
+        function showBackToTopButton() {
+            var button = document.querySelector('.back-to-top');
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                button.style.display = 'block';
+            } else {
+                button.style.display = 'none';
+            }
+        }
+    </script>
+    
+
+</body>
+</html>
