@@ -11,6 +11,16 @@ body {
   background-color: rgb(22, 4,28); 
 }
 
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-top: 20px;
+  margin: 20px auto; 
+}
+
+
 /* Define the cursor effect */
 .cursor-light {
   position: fixed;
@@ -44,7 +54,7 @@ body {
   
 }
 
-p {
+p, .tech-label{
   color: rgb(255,255,255);
 }
   
@@ -102,12 +112,12 @@ p {
 }
 
 .technology {
-  width: 150px; /* Adjust the width of each square */
-  height: 150px; /* Adjust the height of each square */
+  width: 100px; /* Adjust the width of each square */
+  height: 100px; /* Adjust the height of each square */
   
   /*border: 5px solid;
   border-image: linear-gradient(45deg, purple, orange) 1;*/
-  border: 10px solid transparent;
+  border: 2px solid transparent;
   background: linear-gradient(#151515,#151515) padding-box, linear-gradient(to right, #cc00ff, #00ff88 ) border-box;
   border-radius: 10px;
 
@@ -121,17 +131,24 @@ p {
 
 }
 
-.border {
-  border-width: 10px;
-  border-color:aqua;
-  border-radius: 0.75rem;
+
+.tech-icon {
+  font-size: 20px; /* Adjust the size of the icon */
+  display: block;
+  height: auto;
+  max-width: 60%; /* Ensure the image doesn't exceed the container's width */
+  max-height: 60%;
 }
 
-.icon {
-  font-size: 36px; /* Adjust the size of the icon */
+.tech-label {
+  margin: 20px; /* Add spacing between the icon and label */
+  padding: 5px;
 }
 
-.label {
-  margin-top: 10px; /* Add spacing between the icon and label */
+.separator {
+  text-align: center; /* Center the text */
+  margin: 20px 0; /* Add margin for spacing */
+  color: white; /* Text color */
+  width: 100%;
 }
 
