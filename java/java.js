@@ -42,6 +42,7 @@ function createBlogItem(blogImg, blogTitle, blogText) {
   blogDiv.classList.add('blog-item');
 
   var image = document.createElement('img');
+  image.classList.add('blog-image');
   image.src = 'images/blog/'+blogImg;
   image.alt = blogTitle;
 
