@@ -112,13 +112,13 @@ p, .tech-label{
 }
 
 .technology {
-  width: 100px; /* Adjust the width of each square */
-  height: 100px; /* Adjust the height of each square */
+  width: 150px; /* Adjust the width of each square */
+  height: 120px; /* Adjust the height of each square */
   
   /*border: 5px solid;
   border-image: linear-gradient(45deg, purple, orange) 1;*/
   border: 2px solid transparent;
-  background: linear-gradient(#151515,#151515) padding-box, linear-gradient(to right, #cc00ff, #00ff88 ) border-box;
+  background: linear-gradient(#151515,#151515) padding-box, linear-gradient(to right, #AD38FB, #0083FF ) border-box;
   border-radius: 10px;
 
 
@@ -136,8 +136,10 @@ p, .tech-label{
   font-size: 20px; /* Adjust the size of the icon */
   display: block;
   height: auto;
-  max-width: 60%; /* Ensure the image doesn't exceed the container's width */
-  max-height: 60%;
+  max-width: 40%; /* Ensure the image doesn't exceed the container's width */
+  max-height: 40%;
+  margin:10px;
+  margin-bottom: 20px;
 }
 
 .tech-label {
@@ -150,5 +152,51 @@ p, .tech-label{
   margin: 20px 0; /* Add margin for spacing */
   color: white; /* Text color */
   width: 100%;
+}
+
+
+.section-separator {
+  text-align: center; /* Center the text */
+  margin: 20px 0; /* Add margin for spacing */
+  color: white; /* Text color */
+  width: 100%;
+  align-items: center; 
+  font-size: 26px;
+}
+
+
+.blogs-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.blog-item {
+  width: 300px;
+  height: 300px;
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  margin: 10px;
+  overflow: hidden;
+  
+}
+
+.blog-item img {
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
+  margin:0px;
+}
+
+.blog-content {
+  padding: 10px;
+}
+
+.blog-content {
+  margin-top: 0;
+}
+
+.blog-content p {
+  margin-bottom: 0;
 }
 

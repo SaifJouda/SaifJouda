@@ -36,3 +36,29 @@ function createTechnology(iconSrc, labelText) {
 }
 
 
+
+function createBlogItem(blogImg, blogTitle, blogText) {
+  var blogDiv = document.createElement('div');
+  blogDiv.classList.add('blog-item');
+
+  var image = document.createElement('img');
+  image.src = 'images/blog/'+blogImg;
+  image.alt = blogTitle;
+
+  var blogContent = document.createElement('div');
+  blogContent.classList.add('blog-content');
+
+  var title = document.createElement('h3');
+  title.textContent = blogTitle;
+
+  var description = document.createElement('p');
+  description.textContent = blogText;
+
+  blogContent.appendChild(title);
+  blogContent.appendChild(description);
+
+  blogDiv.appendChild(image);
+  blogDiv.appendChild(blogContent);
+
+  document.querySelector('.blogs-section').appendChild(blogDiv);
+}

@@ -3,12 +3,12 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
-    color: #333;
+    background-color: rgb(22, 4,28); 
+    color: #ffffff;
 }
 
 header {
-    background-color: #f5f5f5; /* Change the color here */
+    background-color: #f5f5f500; /* Change the color here */
     color: #fff;
     padding: 20px;
     text-align: center;
@@ -17,19 +17,19 @@ header {
 h1 {
     font-size: 2.5em;
     margin: 20px 0;
-    color: #333;
+    color: #e7e7e7;
 }
 
 h2 {
     font-size: 1.8em;
     margin: 20px 0;
-    color: #333;
+    color: #ececec;
 }
 
 p, ol,a {
     font-size: 1.1em;
     margin-bottom: 20px;
-    color: #555;
+    color: #d8d8d8;
 }
 
 ul {
@@ -44,8 +44,9 @@ section {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid transparent;
+    background: linear-gradient(#151515,#151515) padding-box, linear-gradient(to right, #AD38FB, #0083FF ) border-box;
+    border-radius: 10px;
     border-radius: 8px;
     margin-top: 20px;
 }
@@ -62,7 +63,7 @@ img {
 .image-caption {
     text-align: center;
     font-style: italic;
-    color: #888;
+    color: #b9b9b9;
 }
 
 .back-to-top {
@@ -76,3 +77,20 @@ img {
     display: none;
     margin: 20px auto; 
 }
+
+.cursor-light {
+    position: fixed;
+    width: 800px;
+    height: 800px;
+    /*background-color: rgb(255, 0, 0); /* Adjust the opacity as needed */
+    border-radius: 50%;
+    pointer-events: none; /* Make sure it doesn't interfere with mouse events */
+    transition: transform 0.05s ease;
+    z-index: -1; /* Place it behind other elements */
+    background: radial-gradient(circle, rgb(89, 41, 201,0.2) 0%, rgba(44,8,57,0) 60%);
+    overflow: hidden;
+    margin:0px;
+    padding:0px;
+    margin-left: auto;
+    margin-right: auto
+  }
