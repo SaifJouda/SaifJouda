@@ -7,8 +7,9 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  /*background-color: rgb(44, 8, 57); */
-  background-color: rgb(22, 4,28); 
+  /*background-color: rgb(44, 8, 57); 
+  background-color: rgb(22, 4,28); */
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 img {
@@ -31,7 +32,8 @@ img {
   pointer-events: none; /* Make sure it doesn't interfere with mouse events */
   transition: transform 0.01s ease;
   z-index: -1; /* Place it behind other elements */
-  background: radial-gradient(circle, rgb(89, 41, 201,0.2) 0%, rgba(44,8,57,0) 60%);
+  /*background: radial-gradient(circle, rgb(89, 41, 201,0.2) 0%, rgba(44,8,57,0) 60%);*/
+  background: radial-gradient(circle, rgba(145, 145, 145, 0.2) 0%, rgba(0,0,0,0) 60%);
   overflow: hidden;
   margin:0px;
   padding:0px;
@@ -169,20 +171,47 @@ p, h3, .tech-label{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  /*box-shadow: inset 0 0 6px hsla(0,0%,100%,.1);*/
 }
 
 .blog-item {
   width: 400px;
   height: 400px;
-  background-color: #151515;
+  background-color: #15151500;
   border-radius: 20px;
   margin: 10px;
   overflow: hidden;
   
   border: 2px solid transparent;
-  background: linear-gradient(#151515,#151515) padding-box, linear-gradient(to right, #AD38FB, #AD38FB ) border-box;
+  /*background: linear-gradient(#151515,#151515) padding-box, linear-gradient(to right, #AD38FB, #AD38FB ) border-box;*/
   border-radius: 10px;
+  border-color: #52525b;
+  background: linear-gradient(110deg,#272727bb .06%,#171717bb);
+  /*box-shadow: inset 0 0 6px hsla(0,0%,100%,.1);
+  /*--hover-color: hsla(0,0%,100%,.02);*/
+  transition: 0.5s;
+  opacity: 70%;
 }
+
+.blog-item:hover {
+  /*background-color: hsla(0, 0%, 100%, 0.63); /* This style applies on hover */
+  background-color: #ffffff10;
+  border-color: #676774;
+  opacity: 90%;
+}
+
+/*
+.dark-overlay {
+position: relative;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.0); /* Adjust opacity for darkness */
+/*opacity: 0.9; /* Initial opacity 
+overflow: hidden;
+}
+*/
 
 .blog-item img{
   width: 100%;
@@ -207,3 +236,16 @@ p, h3, .tech-label{
   margin-bottom: 0;
 }
 
+.arrow {
+  width: 5px;
+  height: 5%; 
+  bottom: 10px;  
+  right: 10px;  
+}
+
+
+
+
+.dark-theme .features_card__xYla9 {
+  --hover-color: hsla(0,0%,100%,.02)
+}

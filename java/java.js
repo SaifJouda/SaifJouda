@@ -46,6 +46,11 @@ function createBlogItem(blogImg, blogTitle, blogText) {
   image.src = 'images/blog/'+blogImg;
   image.alt = blogTitle;
 
+  var arrow = document.createElement('img');
+  arrow.classList.add('arrow');
+  arrow.src = 'images/icons/arrow.png';
+  arrow.alt = 'icon';
+
   var blogContent = document.createElement('div');
   blogContent.classList.add('blog-content');
 
@@ -55,11 +60,18 @@ function createBlogItem(blogImg, blogTitle, blogText) {
   var description = document.createElement('p');
   description.textContent = blogText;
 
+
+
+  
+
+
   blogContent.appendChild(title);
   blogContent.appendChild(description);
+  
 
   blogDiv.appendChild(image);
   blogDiv.appendChild(blogContent);
+  blogDiv.appendChild(arrow);
 
   document.querySelector('.blogs-section').appendChild(blogDiv);
 }
