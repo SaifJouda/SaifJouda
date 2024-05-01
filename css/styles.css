@@ -280,38 +280,24 @@ overflow: hidden;
 
 
 .lighting-text {
-  color: transparent;
+  background: radial-gradient(circle, #008cff,#ae00ff);
   background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-  font-size: 3em;
-  background: linear-gradient(to right, yellow 0%, orange 50%, red 100%); /* Gradient for lighting effect */
-  overflow:hidden;
-  background-size:cover
-  /*text-shadow:
-    2px 0px 5px rgba(255, 255, 0, 0.8),  Yellow glow to the right 
-    -2px 0px 5px rgba(255, 165, 0, 0.8); /* Orange glow to the left */
+  color: transparent;
+  animation: gemini 5s linear infinite;
+  background-size: 200% 200%;
 }
 
-/*
-.lighting-text::after {
-  content: ""; /* Empty content for pseudo-element 
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, yellow 0%, orange 50%, red 100%); /* Gradient for lighting effect *
-  animation: lighting 3s ease-in-out infinite alternate; /* Animation properties *
+@keyframes gemini{
+
+  0%{
+    background-position: 200% 200%;
+  }
+
+  100%{
+    background-position: 0% 0%;
+  }
+
 }
 
-@keyframes lighting {
-  from {
-    transform: translateX(-100%); /* Start with lighting off-screen *
-  }
-  to {
-    transform: translateX(100%); /* Animate lighting moving across text *
-  }
-}*/
 
 /*Made By: Saif Jouda*/
