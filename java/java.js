@@ -13,6 +13,11 @@ function createTechnology(iconSrc, labelText) {
   var technologyDiv = document.createElement('div');
   technologyDiv.classList.add('technology');
 
+  technologyDiv.setAttribute("data-tilt", "");
+  technologyDiv.setAttribute("data-tilt-scale", "1.2");
+  technologyDiv.setAttribute("data-tilt-glare", "");
+  technologyDiv.setAttribute("data-tilt-max-glare", "0.8");
+
   //var roundDiv = document.createElement('div');
   //roundDiv.classList.add('round');
   
@@ -40,6 +45,12 @@ function createTechnology(iconSrc, labelText) {
 function createBlogItem(blogImg, blogTitle, blogText) {
   var blogDiv = document.createElement('div');
   blogDiv.classList.add('blog-item');
+
+  blogDiv.setAttribute("data-tilt", "");
+  blogDiv.setAttribute("data-tilt-max", "10");
+  blogDiv.setAttribute("data-tilt-scale", "1");
+  blogDiv.setAttribute("data-tilt-glare", "");
+  blogDiv.setAttribute("data-tilt-max-glare", "0.8");
 
   var image = document.createElement('img');
   image.classList.add('blog-image');
@@ -75,3 +86,4 @@ function createBlogItem(blogImg, blogTitle, blogText) {
 
   document.querySelector('.blogs-section').appendChild(blogDiv);
 }
+
