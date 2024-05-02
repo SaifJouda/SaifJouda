@@ -82,7 +82,7 @@ function createBlogItem(blogImg, blogTitle, blogText) {
 
   blogDiv.appendChild(image);
   blogDiv.appendChild(blogContent);
-  blogDiv.appendChild(arrow);
+  //blogDiv.appendChild(arrow);
 
   document.querySelector('.blogs-section').appendChild(blogDiv);
 }
