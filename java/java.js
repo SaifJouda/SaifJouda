@@ -84,3 +84,41 @@ function createBlogItem(blogImg, blogTitle, blogText) {
   document.querySelector('.blogs-section').appendChild(blogDiv);
 }
 
+function createProjectItem(img, projTitle, text)
+{
+  var projDiv = document.createElemtent('div');
+  projDiv.classList.add('project-item');
+
+  projDiv.setAttribute("data-tilt","");
+  projDiv.setAttribute("data-tilt-max","0.1");
+  projDiv.setAttribute("data-tilt-glare","");
+  projDiv.setAttribute("data-tilt-max-glare","0.7");
+
+  var image = document.createElement('img');
+  image.classList.add('project-image');
+  image.src = 'images/projImages/'+img;
+  image.alt = projTitle;
+
+
+  var projContent = document.createElement('div');
+  projContent.classList.add('project-content');
+
+  var title = document.createElement('h3');
+  title.textContent = projTitle;
+
+  var description = document.createElement('p');
+  description.textContent = text;
+
+  projContent.appendChild(title);
+  projContent.appendChild(description);
+  
+
+  projDiv.appendChild(image);
+  projDiv.appendChild(projContent);
+  //blogDiv.appendChild(arrow);
+
+  document.querySelector('.project-section').appendChild(projDiv);
+
+
+}
+
