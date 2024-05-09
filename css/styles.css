@@ -219,18 +219,6 @@ p, h2, h3, .tech-label{
 
 }
 
-/*
-.dark-overlay {
-position: relative;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background-color: rgba(0, 0, 0, 0.0); /* Adjust opacity for darkness */
-/*opacity: 0.9; /* Initial opacity 
-overflow: hidden;
-}
-*/
 
 .blog-item img{
   width: 100%;
@@ -263,6 +251,83 @@ overflow: hidden;
 }
 
 
+
+.project-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /*box-shadow: inset 0 0 6px hsla(0,0%,100%,.1);*/
+}
+
+.project-item {
+  width: 400px;
+  height: 350px;
+  background-color: #15151500;
+  border-radius: 20px;
+  margin: 10px;
+  overflow: hidden;
+  
+  border: 2px solid transparent;
+  /*background: linear-gradient(#151515,#151515) padding-box, linear-gradient(to right, #AD38FB, #AD38FB ) border-box;*/
+  border-radius: 10px;
+  border-color: #52525b;
+  background: linear-gradient(110deg,#272727bb .06%,#171717bb);
+  /*box-shadow: inset 0 0 6px hsla(0,0%,100%,.1);
+  /*--hover-color: hsla(0,0%,100%,.02);*
+  transition: 0.5s;*/
+  opacity: 80%;
+
+}
+
+.project-item:hover {
+  /*background-color: hsla(0, 0%, 100%, 0.63); /* This style applies on hover */
+  background-color: #ffffff10;
+  border-color: #676774;
+  opacity: 90%;
+
+}
+
+
+.project-item img{
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
+  margin:0px;
+}
+
+.project-img{
+  border-radius: 0px;
+}
+
+.project-content {
+  padding: 10px;
+}
+
+.project-content h3{
+  margin-top: 0;
+}
+
+.project-content p {
+  margin-bottom: 0;
+}
+
+.project-techs p{
+  
+}
+
+.project-techs-div{
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  width: 100%;
+  text-align: center;
+
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 17px;
+
+}
 
 
 .dark-theme .features_card__xYla9 {

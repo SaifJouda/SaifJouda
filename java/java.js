@@ -84,9 +84,9 @@ function createBlogItem(blogImg, blogTitle, blogText) {
   document.querySelector('.blogs-section').appendChild(blogDiv);
 }
 
-function createProjectItem(img, projTitle, text)
+function createProjectItem(img, projTitle, text, tech)
 {
-  var projDiv = document.createElemtent('div');
+  var projDiv = document.createElement('div');
   projDiv.classList.add('project-item');
 
   projDiv.setAttribute("data-tilt","");
@@ -96,7 +96,7 @@ function createProjectItem(img, projTitle, text)
 
   var image = document.createElement('img');
   image.classList.add('project-image');
-  image.src = 'images/projImages/'+img;
+  image.src = 'images/blog/'+img;
   image.alt = projTitle;
 
 
@@ -109,14 +109,23 @@ function createProjectItem(img, projTitle, text)
   var description = document.createElement('p');
   description.textContent = text;
 
+  var techs = document.createElement('p');
+  techs.textContent = tech;
+  techs.classList.add('lighting-text');
+  techs.classList.add('project-techs');
+
+  var projTechs = document.createElement('div'); 
+  projTechs.classList.add('project-techs-div');
+  projTechs.appendChild(techs); 
+
+
   projContent.appendChild(title);
   projContent.appendChild(description);
-  
+  projContent.appendChild(projTechs);
 
   projDiv.appendChild(image);
   projDiv.appendChild(projContent);
-  //blogDiv.appendChild(arrow);
-
+  
   document.querySelector('.project-section').appendChild(projDiv);
 
 
