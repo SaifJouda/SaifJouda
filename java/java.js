@@ -48,10 +48,10 @@ function createBlogItem(blogImg, blogTitle, blogText) {
   blogDiv.classList.add('blog-item');
 
   blogDiv.setAttribute("data-tilt", "");
-  blogDiv.setAttribute("data-tilt-max", "10");
+  blogDiv.setAttribute("data-tilt-max", "7");
   blogDiv.setAttribute("data-tilt-scale", "1");
   blogDiv.setAttribute("data-tilt-glare", "");
-  blogDiv.setAttribute("data-tilt-max-glare", "0.8");
+  blogDiv.setAttribute("data-tilt-max-glare", "0.4");
   blogDiv.setAttribute("data-tilt-reverse", "true");
 
   var image = document.createElement('img');
@@ -92,11 +92,11 @@ function createProjectItem(img, projTitle, text, tech)
   projDiv.setAttribute("data-tilt","");
   projDiv.setAttribute("data-tilt-max","0.1");
   projDiv.setAttribute("data-tilt-glare","");
-  projDiv.setAttribute("data-tilt-max-glare","0.7");
+  projDiv.setAttribute("data-tilt-max-glare","0.2");
 
   var image = document.createElement('img');
   image.classList.add('project-image');
-  image.src = 'images/blog/'+img;
+  image.src = 'images/projects/'+img;
   image.alt = projTitle;
 
 
@@ -130,4 +130,5 @@ function createProjectItem(img, projTitle, text, tech)
 
 
 }
+
 

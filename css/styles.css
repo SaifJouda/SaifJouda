@@ -260,7 +260,7 @@ p, h2, h3, .tech-label{
 }
 
 .project-item {
-  width: 400px;
+  width: 350px;
   height: 350px;
   background-color: #15151500;
   border-radius: 20px;
@@ -390,6 +390,8 @@ p, h2, h3, .tech-label{
   }
 
 }
+
+
 
 
 /*Made By: Saif Jouda*/
