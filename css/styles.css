@@ -393,5 +393,18 @@ p, h2, h3, .tech-label{
 
 
 
+.contact-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Adjust the gap between icons as needed */
+}
+
+.icon-link img {
+  width: 50px; /* Adjust the size of the icons as needed */
+  height: 50px;
+  transition: transform 0.2s;
+}
+
 
 /*Made By: Saif Jouda*/

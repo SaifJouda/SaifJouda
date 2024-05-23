@@ -132,3 +132,19 @@ function createProjectItem(img, projTitle, text, tech)
 }
 
 
+function createContactIcon(imgLink, link)
+{
+  var icon = document.createElement('a');
+  icon.href = link;
+  icon.target = "_blank";
+  icon.className = "icon-link";
+
+  var img = document.createElement('img');
+  img.src = 'images/icons/'+imgLink;
+  img.alt = "imag";
+
+  icon.appendChild(img);
+
+
+  document.querySelector('.contact-section').appendChild(icon)
+}
