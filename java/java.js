@@ -43,7 +43,10 @@ function createTechnology(iconSrc, labelText) {
 
 
 
-function createBlogItem(blogImg, blogTitle, blogText) {
+function createBlogItem(blogImg, blogTitle, blogText, blogLink) {
+  var overa = document.createElement('a');
+  overa.href = blogLink;
+  
   var blogDiv = document.createElement('div');
   blogDiv.classList.add('blog-item');
 
@@ -58,6 +61,7 @@ function createBlogItem(blogImg, blogTitle, blogText) {
   image.classList.add('blog-image');
   image.src = 'images/blog/'+blogImg;
   image.alt = blogTitle;
+
 
   var arrow = document.createElement('img');
   arrow.classList.add('arrow');
@@ -80,8 +84,9 @@ function createBlogItem(blogImg, blogTitle, blogText) {
   blogDiv.appendChild(image);
   blogDiv.appendChild(blogContent);
   //blogDiv.appendChild(arrow);
+  overa.appendChild(blogDiv)
 
-  document.querySelector('.blogs-section').appendChild(blogDiv);
+  document.querySelector('.blogs-section').appendChild(overa);
 }
 
 function createProjectItem(img, projTitle, text, tech)
