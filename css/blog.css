@@ -3,7 +3,7 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: rgb(22, 4,28); 
+    background-color: rgba(0, 0, 0, 0.9);/*rgb(22, 4,28);*/ 
     color: #ffffff;
 }
 
@@ -45,7 +45,7 @@ section {
     margin: 0 auto;
     padding: 20px;
     border: 2px solid transparent;
-    background: linear-gradient(#151515,#151515) padding-box, linear-gradient(to right, #AD38FB, #0083FF ) border-box;
+    background: linear-gradient(#151515f5,#151515f5) padding-box, #818199 border-box;/*linear-gradient(#151515,#151515) padding-box,linear-gradient(to right, #AD38FB, #0083FF ) border-box;*/
     border-radius: 10px;
     border-radius: 8px;
     margin-top: 20px;
