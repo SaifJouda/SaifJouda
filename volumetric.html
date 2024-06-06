@@ -16,15 +16,16 @@
 
     <section>
         <h2>Introduction</h2>
-        <h3>What is volumetric lighting?</h3>
-        <p>Volumetric lighting, also known as "god rays," is a lighting technique commonly used in computer graphics to simulate the way light interacts with a medium such as fog, smoke, dust, or water. This adds realism to scenes by simulating the scattering and absorption of light as it passes through these media, creating visible beams or shafts of light.</p>
-        <h3>How does it work?</h3>
-        <p>There are several way to create volumetric lighting, but techniques typically involves casting rays from the camera through the scene, sampling the medium at intervals along each ray, and calculating lighting effects such as scattering and absorption at these points.</p>
-        <h3>Whats the problem?</h3>
+        <img src="images/blog/volumetric/volumetricLighting.jpg" alt="Volumetric Lighting Example">
+        <h3>What is Volumetric Lighting?</h3>
+        <p>Volumetric lighting, also known as "god rays," is a lighting technique commonly used in computer graphics to simulate the way light interacts with a medium such as fog, smoke, dust, or water. This technique adds realism to scenes by simulating the scattering and absorption of light as it passes through these media, creating visible beams or shafts of light.</p>
+        <h3>How Does It Work?</h3>
+        <p>There are several ways to create volumetric lighting, but most techniques involve casting rays from the camera through the scene, sampling the medium at intervals along each ray, and calculating lighting effects such as scattering and absorption at these points.</p>
+        <h3>What Are the Challenges?</h3>
         <ul>
             <li>
                 <strong>Performance</strong>
-                <p>Volumetric lighting is computationally intensive, requiring significant GPU resources. This can lead to performance issues, especially on lower-end hardware or in complex scenes with many light sources and high-density volumetric effects.</p>
+                <p>Volumetric lighting is computationally intensive and requires significant GPU resources. This can lead to performance issues, especially on lower-end hardware or in complex scenes with many light sources and high-density volumetric effects.</p>
             </li>
             <li>
                 <strong>Compatibility Issues</strong>
@@ -32,52 +33,53 @@
             </li>
             <li>
                 <strong>HDRP Only</strong>
-                <p>HDRP is the only Unity rendering pipeline that offers built-in volumetric lighting. Users with projects created using the Universal Render Pipeline (URP) or the Built-in Render Pipeline will need to use third-party assets and plugins to add volumetric lighting effects.</p>
+                <p>Currently, the High Definition Render Pipeline (HDRP) is the only Unity rendering pipeline that offers built-in volumetric lighting. Users with projects created using the Universal Render Pipeline (URP) or the Built-in Render Pipeline will need to use third-party assets and plugins to add volumetric lighting effects.</p>
             </li>
         </ul>
-
-        <h3>Whats the is Solution?</h3>
-        <p>There is a way to mimic volumetric lighting effects in Unity using shapes and Shader Graph. This approach is lightweight in terms of performance and is compatible with both HDRP and URP render pipelines.</p>
-        
+    <h3>What is the Solution?</h3>
+    <p>There is a way to mimic volumetric lighting effects in Unity using shapes and Shader Graph. This approach is lightweight in terms of performance and is compatible with both HDRP and URP.</p>
     </section>
-
     <section>
         <h2>Step 1: Blender</h2>
         <h3>The Shape</h3>
-        <p>Start by creating a cylinder, removing its top and bottom sides, and narrowing the upper section. This should result in a cone or 'megaphone' shape.</p>
-        <h3>UV mapping</h3>
-        <p>All we need to do at this stage is extend the vertices to cover the entire map. This step is crucial for the shader we are going to create.</p>
+        <p>Start by creating a cylinder in Blender, removing its top and bottom faces, and narrowing the upper section. This should result in a cone or 'megaphone' shape.</p>
+        <img src="images/blog/volumetric/shape.png" alt="Shape">
+        <h3>UV Mapping</h3>
+        <p>Extend the vertices to cover the entire UV map. This step is crucial for the shader we are going to create.</p>
+        <img src="images/blog/volumetric/beforeUV.png" alt="Before UV Mapping">
+        <img src="images/blog/volumetric/afterUV.png" alt="After UV Mapping">
+        <h3>Double-Sided Faces</h3>
+        <p>To ensure the volumetric lighting effect is visible from all angles, we need to make the cylinder double-sided. Add a Solidify modifier and set the thickness to a very small value, such as 0.0001m.</p>
+        <img src="images/blog/volumetric/solidify.png" alt="Solidify Modifier">
     </section>
-
     <section>
         <h2>Step 2: Unity</h2>
         <h3>Unity Setup</h3>
-        <p>Create a spotlight and import the 'cone' that we just created in blender. Parent the cone inside the spotlight, then rotate and scale the 'cone' object so that it aligns with the light cone created by the light.</p>
-        <h3>ShaderGraph</h3>
+        <p>Create a spotlight in Unity and import the 'cone' we created in Blender. Parent the cone to the spotlight, then rotate and scale the cone object so that it aligns with the light cone created by the spotlight.</p>
+        <img src="images/blog/volumetric/unitySetup.png" alt="Unity Setup">
+        <h3>Shader Graph</h3>
         <p>Create an unlit shader graph.</p>
-
         <ul>
             <li>
                 <strong>Base Color</strong>
-                <p>Create a color and float property. Set the color mode to HDR to be able to increase its intensity, which will make the volumetrtic light look better if you are using post processing. Create a fernel effect and plug in the float property. Plug both the color and the fernel into a multiply, which will be plugged into the base color.</p>
+                <p>Create a color property and a float property. Set the color mode to HDR to allow for increased intensity, enhancing the volumetric light effect when using post-processing. Create a Fresnel Effect node, connect the float property to it, then connect the Fresnel Effect output to a One Minus node. This will make the center of the volumetric light brighter. Combine the color and the inverted Fresnel effect using a Multiply node and connect it to the Base Color.</p>
             </li>
             <li>
                 <strong>Alpha</strong>
-                <p>Create a UV node, split it, plug the green channel into a clamp, then plug that into the (T) of two lerp nodes. For one lerp, set its first value to 0, plug a second float property into the second float value, then plug the lerp into the other lerps second value. Finally, plug the other lerp into the alpha. The whole point of this part is to create a gradient transparent effect, starting from the top to the bottom of the cone.</p>
+                <p>Create a UV node and split it. Plug the green channel into a Clamp node, then connect the Clamp output to the T input of two Lerp nodes. For the first Lerp node, set its first value to 0, connect a second float property to the second input, and then connect the output to the second input of the other Lerp node. Finally, connect the output of the second Lerp node to the Alpha. This setup creates a gradient transparency effect from the top to the bottom of the cone.</p>
             </li>
             <li>
                 <strong>Values</strong>
-                <p>Color: Set it to the same color as the light and set its intensity to around +4</p>
-                <p>Floats: set the first float to around 0.7 and the second to 0.1. Play around with the values to find something that fits.</p>
+                <p>Set the color to match the light color and increase its intensity to around +4. For the float properties, set the first float to around 0.1 and the second to 0.2. Adjust these values to find the best fit.</p>
             </li>
         </ul>
+        <img src="images/blog/volumetric/shader.png" alt="Shader Graph">
     </section>
-
     <section>
         <h3>Results</h3>
-        <h3></h3>
+        <p>The final product is a volumetric light that is both lightweight and compatible.</p>
+        <img src="images/blog/volumetric/finalVolumetric.png" alt="Final Volumetric Lighting">
     </section>
-
 
     
 
