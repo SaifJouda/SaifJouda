@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Navigation</title>
+    <link rel="stylesheet" href="css/blog.css">
+</head>
+<body>
+
+
+    <header>
+        <h1>Volumetric Lighting in Unity</h1>
+        <p><strong>By Saif Jouda | June. 6 2024</strong></p>
+    </header>
+
+    <section>
+        <h2>Introduction</h2>
+        <h3>What is volumetric lighting?</h3>
+        <p>Volumetric lighting, also known as "god rays," is a lighting technique commonly used in computer graphics to simulate the way light interacts with a medium such as fog, smoke, dust, or water. This adds realism to scenes by simulating the scattering and absorption of light as it passes through these media, creating visible beams or shafts of light.</p>
+        <h3>How does it work?</h3>
+        <p>There are several way to create volumetric lighting, but techniques typically involves casting rays from the camera through the scene, sampling the medium at intervals along each ray, and calculating lighting effects such as scattering and absorption at these points.</p>
+        <h3>Whats the problem?</h3>
+        <ul>
+            <li>
+                <strong>Performance</strong>
+                <p>Volumetric lighting is computationally intensive, requiring significant GPU resources. This can lead to performance issues, especially on lower-end hardware or in complex scenes with many light sources and high-density volumetric effects.</p>
+            </li>
+            <li>
+                <strong>Compatibility Issues</strong>
+                <p>Ensuring that volumetric lighting works consistently across different platforms (PC, consoles, mobile devices) can be challenging. Different hardware capabilities and performance characteristics can necessitate platform-specific adjustments and optimizations.</p>
+            </li>
+            <li>
+                <strong>HDRP Only</strong>
+                <p>HDRP is the only Unity rendering pipeline that offers built-in volumetric lighting. Users with projects created using the Universal Render Pipeline (URP) or the Built-in Render Pipeline will need to use third-party assets and plugins to add volumetric lighting effects.</p>
+            </li>
+        </ul>
+
+        <h3>Whats the is Solution?</h3>
+        <p>There is a way to mimic volumetric lighting effects in Unity using shapes and Shader Graph. This approach is lightweight in terms of performance and is compatible with both HDRP and URP render pipelines.</p>
+        
+    </section>
+
+    <section>
+        <h2>Step 1: Blender</h2>
+        <h3>The Shape</h3>
+        <p>Start by creating a cylinder, removing its top and bottom sides, and narrowing the upper section. This should result in a cone or 'megaphone' shape.</p>
+        <h3>UV mapping</h3>
+        <p>All we need to do at this stage is extend the vertices to cover the entire map. This step is crucial for the shader we are going to create.</p>
+    </section>
+
+    <section>
+        <h2>Step 2: Unity</h2>
+        <h3>Unity Setup</h3>
+        <p>Create a spotlight and import the 'cone' that we just created in blender. Parent the cone inside the spotlight, then rotate and scale the 'cone' object so that it aligns with the light cone created by the light.</p>
+        <h3>ShaderGraph</h3>
+        <p>Create an unlit shader graph.</p>
+
+        <ul>
+            <li>
+                <strong>Base Color</strong>
+                <p>Create a color and float property. Set the color mode to HDR to be able to increase its intensity, which will make the volumetrtic light look better if you are using post processing. Create a fernel effect and plug in the float property. Plug both the color and the fernel into a multiply, which will be plugged into the base color.</p>
+            </li>
+            <li>
+                <strong>Alpha</strong>
+                <p>Create a UV node, split it, plug the green channel into a clamp, then plug that into the (T) of two lerp nodes. For one lerp, set its first value to 0, plug a second float property into the second float value, then plug the lerp into the other lerps second value. Finally, plug the other lerp into the alpha. The whole point of this part is to create a gradient transparent effect, starting from the top to the bottom of the cone.</p>
+            </li>
+            <li>
+                <strong>Values</strong>
+                <p>Color: Set it to the same color as the light and set its intensity to around +4</p>
+                <p>Floats: set the first float to around 0.7 and the second to 0.1. Play around with the values to find something that fits.</p>
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Results</h3>
+        <h3></h3>
+    </section>
+
+
+    
+
+
+    <button class="back-to-top" onclick="scrollToTop()">Back to Top</button>
+
+    <script>
+        // Function to scroll to the top of the page
+        function scrollToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+        // Show or hide the "Back to Top" button based on scroll position
+        window.onscroll = function () {
+            showBackToTopButton();
+        };
+
+        function showBackToTopButton() {
+            var button = document.querySelector('.back-to-top');
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                button.style.display = 'block';
+            } else {
+                button.style.display = 'none';
+            }
+        }
+    </script>
+    
+
+</body>
+</html>
