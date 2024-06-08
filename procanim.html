@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Navigation</title>
+    <link rel="stylesheet" href="css/blog.css">
+</head>
+<body>
+
+
+    <header>
+        <h1>Procedural Animation in Unity</h1>
+        <p><strong>By Saif Jouda | June. 6 2024</strong></p>
+    </header>
+
+    <section>
+        <h2>Introduction</h2>
+        <img src="images/blog/volumetric/volumetricLighting.jpg" alt="Volumetric Lighting Example">
+        <h3>What is it?</h3>
+        <p>
+            Procedural animation is a technique in computer graphics where animations are created algorithmically rather than being manually crafted by animators. 
+         </p>
+        <h3>How does it work?</h3> 
+        <p>Procedural animation generates movements using algorithms and mathematical functions instead of manual keyframes. It works by:</p>  
+        <ul>
+            <li>
+                <strong>Designing Algorithms:</strong>
+                <p>Rules and mathematical models define movements.</p>
+            </li>
+            <li>
+                <strong>Using Parameters:</strong>
+                <p>Inputs like environmental factors and user interactions influence animations.</p>
+            </li>
+            <li>
+                <strong>Real-time Calculation:</strong>
+                <p> Animations are calculated and rendered dynamically, allowing for adaptive and realistic motions.</p>
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Animation Rigging in Unity</h2>
+        <p>Animation rigging in Unity involves setting up a skeleton (rig) for a character or object, which consists of bones and joints. This rig allows animators to create and control movement. Key components include:</p>
+        <ul>
+            <li>
+                <strong>Skeleton/Bones:</strong>
+                <p>Hierarchical structure of bones and joints.</p>
+            </li>
+            <li>
+                <strong>Skinned Mesh Renderer:</strong>
+                <p>Component that renders a deformable mesh.</p>
+            </li>
+            <li>
+                <strong>Constraints:</strong>
+                <p>Rules that dictate how bones move (e.g., IK constraints for realistic limb movement).</p>
+            </li>
+        </ul>
+        <p>Using Unity's Animation Rigging package, developers can create complex animations by defining these bones, joints, and constraints, facilitating more dynamic and realistic character movements.</p>
+    
+        <h3>Contraint Components</h3>
+        <h4>Blend</h4>
+        <p><strong>Function:</strong> Blends the transformations of multiple sources (position, rotation, scale) to a single object.</p>
+        <p><strong>Use Case:</strong> Smoothly transitioning an object between different states or animations.</p>
+
+        <img src="images/blog/procedural/blend_constraint.gif">
+        
+        <h4>Chain IK</h4>
+        <p><strong>Function:</strong> Controls a chain of bones to follow a target position, typically for limbs.</p>
+        <p><strong>Use Case:</strong> Creating natural limb movements, such as a character’s arm reaching for an object.</p>
+        <img src="images/blog/procedural/chainik.gif">
+        
+        <h4>Damped</h4>
+        
+        <p><strong>Function:</strong> Applies a damping effect to an object's transformation, smoothing out sudden movements.</p>
+        <p><strong>Use Case:</strong> Reducing jitter or oscillations in animations, such as camera shake or soft body dynamics.</p>
+        <img src="images/blog/procedural/damped_transform.gif">
+        
+        <h4>Multi-Aim</h4>
+        
+        <p><strong>Function:</strong> Orients an object to aim at multiple targets, blending between them based on weights.</p>
+        <p><strong>Use Case:</strong> Ensuring an object (like a head or eye) smoothly tracks multiple points of interest.</p>
+        <img src="images/blog/procedural/multi_aim.gif">
+        
+        <h4>Multi-Parent</h4>
+        <p><strong>Function:</strong> Allows an object to inherit transformations from multiple parent objects.</p>
+        <p><strong>Use Case:</strong> Complex parenting setups where an object needs to follow multiple influences, such as holding an object with both hands.</p>
+        
+        <img src="images/blog/procedural/multi_parent.gif">
+        
+        <h4>Multi-Position</h4>
+        <p><strong>Function:</strong> Constrains an object’s position to multiple targets, blending their influence.</p>
+        <p><strong>Use Case:</strong> Positioning an object relative to several control points, useful in multi-character interactions.</p>
+        <img src="images/blog/procedural/multi_position.gif">
+        
+        <h4>Multi-Referential</h4>
+        <p><strong>Function:</strong> Switches an object’s reference between different targets seamlessly.</p>
+        <p><strong>Use Case:</strong> Changing the parent or reference of an object dynamically, such as switching which hand holds an object.</p>
+
+        <img src="images/blog/procedural/multi_ref.gif">
+        
+        <h4>Multi-Rotation</h4>
+        <p><strong>Function:</strong> Blends the rotational influence of multiple targets on an object.</p>
+        <p><strong>Use Case:</strong> Smoothing out rotational transitions between different animations or control points.</p>
+
+        <img src="images/blog/procedural/multi_rotation.gif">
+        
+        <h4>Override</h4>
+        <p><strong>Function:</strong> Overrides the transformation of an object with specified values or influences.</p>
+        <p><strong>Use Case:</strong> Temporarily changing an object’s transformation for specific actions or states.</p>
+
+        <img src="images/blog/procedural/override_transform.gif">
+        
+        <h4>Twist Chain</h4>
+        <p><strong>Function:</strong> Distributes a twist along a chain of bones evenly.</p>
+        <p><strong>Use Case:</strong> Creating natural twisting motions in body parts like the forearm or spine.</p>
+
+        <img src="images/blog/procedural/twistchain.gif">
+        
+        <h4>Twist Correction</h4>
+        <p><strong>Function:</strong> Corrects unwanted twisting in a bone, ensuring proper deformation.</p>
+        <p><strong>Use Case:</strong> Maintaining the correct shape of a mesh during complex rotations, such as twisting an arm.</p>
+
+        <img src="images/blog/procedural/twist_correction.gif">
+        
+        <h4>Two Bone IK</h4>
+        <p><strong>Function:</strong> Controls two connected bones (like upper and lower arm) to reach a target position.</p>
+        <p><strong>Use Case:</strong> Animating joints such as elbows and knees with natural bending and reaching motions.</p>
+        <img src="images/blog/procedural/two_bone_ik.gif">
+
+    </section>
+
+    <section>
+        <h2>Blender Setup</h2>
+    </section>
+    
+    <section>
+        <h2>Unity Setup</h2>
+    </section>
+
+    <section>
+        <h2>Results</h2>
+
+        gif of monsters
+
+        add link to voluetric lighting
+    </section>
+
+
+    <button class="back-to-top" onclick="scrollToTop()">Back to Top</button>
+
+    <script>
+        // Function to scroll to the top of the page
+        function scrollToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+        // Show or hide the "Back to Top" button based on scroll position
+        window.onscroll = function () {
+            showBackToTopButton();
+        };
+
+        function showBackToTopButton() {
+            var button = document.querySelector('.back-to-top');
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                button.style.display = 'block';
+            } else {
+                button.style.display = 'none';
+            }
+        }
+    </script>
+    
+
+</body>
+</html>
