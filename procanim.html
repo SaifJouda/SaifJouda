@@ -132,12 +132,66 @@
 
     <section>
         <h2>Blender Setup</h2>
+
+        <h3>Create a shape</h3>
+        <p>Create the desired shape you want to animate.</p>
+        <img src="images/blog/procedural/createShape.png">
+
+        <h3>Add Armature</h3>
+        <p>Press shift+a then click on Armature to add the base bone.</p>
+        <img src="images/blog/procedural/addBone.png">
+
+        <h4>Change Viewport display (recommended)</h4>
+        <p>To see the bone structure easier, go to Data>Viewport Display, then check the In Front box.</p>
+        <img src="images/blog/procedural/inFront.png">
+
+        <h3>Build the armature</h3>
+        <p>With the base bone selected in object mode, go into edit mode then you can:</p>
+        <p>Press E to create a new bone at the selected bone</p>
+        <p>Press G to move and rotate the selected mode</p>
+        <img src="images/blog/procedural/editBone.png">
+
+        <h3>Connect the Object with the Armature</h3>
+        <p>Shift click the armature THEN the object, then press CNTRL/CMMD+P, finally select "With Automatic Weights"</p>
+        <img src="images/blog/procedural/attachBone.png">
+
+        <h3>Weight Paint (Optional)</h3>
+        <p>To improve how the bones bend the objects, you customize how each bone affects the mesh. To do this select the mesh/object in object mode then switch to Weight Paint. Here you can  </p>
+        get wieght from https://docs.blender.org/manual/en/latest/sculpt_paint/weight_paint/introduction.html 
+        <img src="images/blog/procedural/wieghtPaint.png">
+        <img src="images/blog/procedural/Paint.png">
+
+        <h3>Export</h3>
+        <p>Export the project as a .fbx file and place it in your Unity assets folder.</p>
+        <img src="images/blog/procedural/export.png">
+
     </section>
     
     <section>
         <h2>Unity Setup</h2>
-    </section>
+        <h3>Get the Package</h3>
+        <p>Get the "Animation Rigging" package from the Unity Registry</p>
+        <img src="images/blog/procedural/animationRig.png">
 
+
+        <h3>Setup the Object</h3>
+        <p>The .fbx file you imported should be in a prefab state. Drag and drop it into your scene. While the "Armature" child object is selected, click on "Animation Rigging">"Rig Setup". This will add some important components to the object. In addition, if you would like to see the bones, do "Animation Rigging">"Bone Renderer Setup".</p>
+        <img src="images/blog/procedural/addObject.png">
+
+        <h3>Animation Rigging Component</h3>
+        <p>In Armature, a Rig child object should have been created. Create a child object for "Rig" for the constraint. Add the desired constrain component on the new object we just created. From here, each different constrain have their own requirements. For this example, we will use the Two Bone IK Constraint.</p>
+        
+        
+        <img src="images/blog/procedural/component.png">
+        
+        <img src="images/blog/procedural/rigObjects.png">
+
+        <img src="images/blog/procedural/visual.png">
+        
+        <img src="images/blog/procedural/play.png">
+
+
+    </section>
     <section>
         <h2>Results</h2>
 
