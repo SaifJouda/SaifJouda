@@ -3,26 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Navigation</title>
+    <title>Procedural Animation</title>
     <link rel="stylesheet" href="css/blog.css">
 </head>
 <body>
-
-
     <header>
         <h1>Procedural Animation in Unity</h1>
-        <p><strong>By Saif Jouda | June. 6 2024</strong></p>
+        <p><strong>By Saif Jouda | June 10, 2024</strong></p>
     </header>
 
     <section>
         <h2>Introduction</h2>
-        <img src="images/blog/volumetric/volumetricLighting.jpg" alt="Volumetric Lighting Example">
+        <img src="images/blog/procedural/intro.gif" style="width: 70%">
         <h3>What is it?</h3>
         <p>
-            Procedural animation is a technique in computer graphics where animations are created algorithmically rather than being manually crafted by animators. 
-         </p>
-        <h3>How does it work?</h3> 
-        <p>Procedural animation generates movements using algorithms and mathematical functions instead of manual keyframes. It works by:</p>  
+            Procedural animation is a technique in computer graphics where animations are created algorithmically rather than being manually crafted by animators.
+        </p>
+        <h3>How does it work?</h3>
+        <p>Procedural animation generates movements using algorithms and mathematical functions instead of manual keyframes. It works by:</p>
         <ul>
             <li>
                 <strong>Designing Algorithms:</strong>
@@ -34,7 +32,7 @@
             </li>
             <li>
                 <strong>Real-time Calculation:</strong>
-                <p> Animations are calculated and rendered dynamically, allowing for adaptive and realistic motions.</p>
+                <p>Animations are calculated and rendered dynamically, allowing for adaptive and realistic motions.</p>
             </li>
         </ul>
     </section>
@@ -58,11 +56,10 @@
         </ul>
         <p>Using Unity's Animation Rigging package, developers can create complex animations by defining these bones, joints, and constraints, facilitating more dynamic and realistic character movements.</p>
     
-        <h3>Contraint Components</h3>
+        <h3>Constraint Components</h3>
         <h4>Blend</h4>
         <p><strong>Function:</strong> Blends the transformations of multiple sources (position, rotation, scale) to a single object.</p>
         <p><strong>Use Case:</strong> Smoothly transitioning an object between different states or animations.</p>
-
         <img src="images/blog/procedural/blend_constraint.gif">
         
         <h4>Chain IK</h4>
@@ -71,13 +68,11 @@
         <img src="images/blog/procedural/chainik.gif">
         
         <h4>Damped</h4>
-        
         <p><strong>Function:</strong> Applies a damping effect to an object's transformation, smoothing out sudden movements.</p>
         <p><strong>Use Case:</strong> Reducing jitter or oscillations in animations, such as camera shake or soft body dynamics.</p>
         <img src="images/blog/procedural/damped_transform.gif">
         
         <h4>Multi-Aim</h4>
-        
         <p><strong>Function:</strong> Orients an object to aim at multiple targets, blending between them based on weights.</p>
         <p><strong>Use Case:</strong> Ensuring an object (like a head or eye) smoothly tracks multiple points of interest.</p>
         <img src="images/blog/procedural/multi_aim.gif">
@@ -85,7 +80,6 @@
         <h4>Multi-Parent</h4>
         <p><strong>Function:</strong> Allows an object to inherit transformations from multiple parent objects.</p>
         <p><strong>Use Case:</strong> Complex parenting setups where an object needs to follow multiple influences, such as holding an object with both hands.</p>
-        
         <img src="images/blog/procedural/multi_parent.gif">
         
         <h4>Multi-Position</h4>
@@ -96,110 +90,100 @@
         <h4>Multi-Referential</h4>
         <p><strong>Function:</strong> Switches an object’s reference between different targets seamlessly.</p>
         <p><strong>Use Case:</strong> Changing the parent or reference of an object dynamically, such as switching which hand holds an object.</p>
-
         <img src="images/blog/procedural/multi_ref.gif">
         
         <h4>Multi-Rotation</h4>
         <p><strong>Function:</strong> Blends the rotational influence of multiple targets on an object.</p>
         <p><strong>Use Case:</strong> Smoothing out rotational transitions between different animations or control points.</p>
-
         <img src="images/blog/procedural/multi_rotation.gif">
         
         <h4>Override</h4>
         <p><strong>Function:</strong> Overrides the transformation of an object with specified values or influences.</p>
         <p><strong>Use Case:</strong> Temporarily changing an object’s transformation for specific actions or states.</p>
-
         <img src="images/blog/procedural/override_transform.gif">
         
         <h4>Twist Chain</h4>
         <p><strong>Function:</strong> Distributes a twist along a chain of bones evenly.</p>
         <p><strong>Use Case:</strong> Creating natural twisting motions in body parts like the forearm or spine.</p>
-
         <img src="images/blog/procedural/twistchain.gif">
         
         <h4>Twist Correction</h4>
         <p><strong>Function:</strong> Corrects unwanted twisting in a bone, ensuring proper deformation.</p>
         <p><strong>Use Case:</strong> Maintaining the correct shape of a mesh during complex rotations, such as twisting an arm.</p>
-
         <img src="images/blog/procedural/twist_correction.gif">
         
         <h4>Two Bone IK</h4>
         <p><strong>Function:</strong> Controls two connected bones (like upper and lower arm) to reach a target position.</p>
         <p><strong>Use Case:</strong> Animating joints such as elbows and knees with natural bending and reaching motions.</p>
         <img src="images/blog/procedural/two_bone_ik.gif">
-
     </section>
 
     <section>
         <h2>Blender Setup</h2>
 
-        <h3>Create a shape</h3>
+        <h3>Create a Shape</h3>
         <p>Create the desired shape you want to animate.</p>
         <img src="images/blog/procedural/createShape.png">
 
         <h3>Add Armature</h3>
-        <p>Press shift+a then click on Armature to add the base bone.</p>
+        <p>Press Shift+A then click on Armature to add the base bone.</p>
         <img src="images/blog/procedural/addBone.png">
 
-        <h4>Change Viewport display (recommended)</h4>
-        <p>To see the bone structure easier, go to Data>Viewport Display, then check the In Front box.</p>
+        <h4>Change Viewport Display (Recommended)</h4>
+        <p>To see the bone structure easier, go to Data > Viewport Display, then check the In Front box.</p>
         <img src="images/blog/procedural/inFront.png">
 
-        <h3>Build the armature</h3>
-        <p>With the base bone selected in object mode, go into edit mode then you can:</p>
-        <p>Press E to create a new bone at the selected bone</p>
-        <p>Press G to move and rotate the selected mode</p>
+        <h3>Build the Armature</h3>
+        <p>With the base bone selected in Object Mode, go into Edit Mode. You can:</p>
+        <p>Press E to create a new bone at the selected bone.</p>
+        <p>Press G to move and rotate the selected bone.</p>
         <img src="images/blog/procedural/editBone.png">
 
         <h3>Connect the Object with the Armature</h3>
-        <p>Shift click the armature THEN the object, then press CNTRL/CMMD+P, finally select "With Automatic Weights"</p>
+        <p>Shift-click the armature then the object, then press CTRL/CMD+P. Finally, select "With Automatic Weights".</p>
         <img src="images/blog/procedural/attachBone.png">
 
         <h3>Weight Paint (Optional)</h3>
-        <p>To improve how the bones bend the objects, you customize how each bone affects the mesh. To do this select the mesh/object in object mode then switch to Weight Paint. Here you can  </p>
-        get wieght from https://docs.blender.org/manual/en/latest/sculpt_paint/weight_paint/introduction.html 
-        <img src="images/blog/procedural/wieghtPaint.png">
+        <p>To improve how the bones bend the objects, you can customize how each bone affects the mesh. To do this, select the mesh/object in Object Mode then switch to Weight Paint. Here you can:</p>
+        <p>Get weight from <a href="https://docs.blender.org/manual/en/latest/sculpt_paint/weight_paint/introduction.html">Blender Manual</a></p>
+        <img src="images/blog/procedural/weightPaint.png">
         <img src="images/blog/procedural/Paint.png">
 
         <h3>Export</h3>
         <p>Export the project as a .fbx file and place it in your Unity assets folder.</p>
         <img src="images/blog/procedural/export.png">
-
     </section>
     
     <section>
         <h2>Unity Setup</h2>
         <h3>Get the Package</h3>
-        <p>Get the "Animation Rigging" package from the Unity Registry</p>
+        <p>Get the "Animation Rigging" package from the Unity Registry.</p>
         <img src="images/blog/procedural/animationRig.png">
 
-
-        <h3>Setup the Object</h3>
-        <p>The .fbx file you imported should be in a prefab state. Drag and drop it into your scene. While the "Armature" child object is selected, click on "Animation Rigging">"Rig Setup". This will add some important components to the object. In addition, if you would like to see the bones, do "Animation Rigging">"Bone Renderer Setup".</p>
+        <h3>Set Up the Object</h3>
+        <p>The .fbx file you imported should be in a prefab state. Drag and drop it into your scene. While the "Armature" child object is selected, click on "Animation Rigging" > "Rig Setup". This will add some important components to the object. Additionally, if you would like to see the bones, go to "Animation Rigging" > "Bone Renderer Setup".</p>
         <img src="images/blog/procedural/addObject.png">
 
         <h3>Animation Rigging Component</h3>
-        <p>In Armature, a Rig child object should have been created. Create a child object for "Rig" for the constraint. Add the desired constrain component on the new object we just created. From here, each different constrain have their own requirements. For this example, we will use the Two Bone IK Constraint.</p>
-        
-        
+        <p>In Armature, a Rig child object should have been created. Create a child object for "Rig" for the constraint. Add the desired constraint component on the new object we just created. Each constraint has its own requirements. For this example, we will use the Two Bone IK Constraint. Every constraint requires references to bone objects and source objects. Bone objects are simply the bones in the armature. In this case, we require Root (the base bone), Mid (the second bone), and the Tip (the object at the end of the last bone). You will have to think about the constraint you want and create a bone structure in Blender that aligns with it. In this case, I only need two bones.</p> 
         <img src="images/blog/procedural/component.png">
-        
+        <p>We also need source objects which allow us to control our rig. These are typically empty game objects created in the same hierarchy as the object with the constraint. In this case, the target is where we want the tip to be and the hint is where we want the joint to be angled towards.</p>
         <img src="images/blog/procedural/rigObjects.png">
-
+        <p>Additionally, we can visualize any rig object we want with various shapes. Select a rig object then at the bottom right of the scene window, there should be an option to add a visualization. You can change the shape, color, and size. These are only visible in the scene view.</p>
         <img src="images/blog/procedural/visual.png">
-        
         <img src="images/blog/procedural/play.png">
-
-
     </section>
+    
     <section>
         <h2>Results</h2>
-
-        gif of monsters
-
-        add link to voluetric lighting
+        <img src="images/blog/procedural/result.gif" style="width: 80%">
     </section>
 
+    <section>
+        <h2>Thanks for Reading!</h2>
+        <h4>Check out my blog on <a href="https://saifjouda.github.io/SaifJouda/volumetric">Volumetric Lighting</a></h4>
+        <img src="images/blog/procedural/thanks.gif" style="width: 80%">
+    </section>
 
     <button class="back-to-top" onclick="scrollToTop()">Back to Top</button>
 
@@ -224,7 +208,5 @@
             }
         }
     </script>
-    
-
 </body>
 </html>
