@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volumetric Lighting</title>
+    <link rel="stylesheet" href="css/blog.css">
+</head>
+<body>
+    
+    
+    <header>
+        <h1>NASA API</h1>
+        <p><strong>By Saif Jouda | Aug. 18 2024</strong></p>
+    </header>
+    
+    <script src="java/nasa.js"></script>
+    <section>
+        <h2>APOD</h2>
+        <h3>Astronomy Picture of the Date</h3>
+        <h3>Each day a different image or photograph of our fascinating universe is featured, along with a brief explanation.</h3>
+
+
+        
+        <!-- APOD Section -->
+        <div class="section" id="apod">
+            <img id="apod-img" src="" alt="APOD">
+            <p id="apod-title"></p>
+            <p id="apod-desc"></p>
+        </div>
+        
+        
+    </section>
+    
+    <section>
+        <!-- Mars Rover Photos Section -->
+        <div class="section" id="mars-rover">
+            <h2>Mars Rover Photos</h2>
+            <img id="mars-rover-img" src="" alt="Mars Rover">
+            <p id="mars-rover-date"></p>
+            <p id="mars-rover-rover"></p>
+        </div>
+    </section>
+
+    <section>
+        <div class="section" id="epic">
+            <h2>Earth Polychromatic Imaging Camera (EPIC)</h2>
+            <img id="epic-img" src="" alt="EPIC Image">
+            <p id="epic-date"></p>
+            <p id="epic-caption"></p>
+        </div>
+    </section>
+
+    <section>
+        <div class="section" id="insight">
+            <h2>InSight Mars Weather</h2>
+            <p id="sol"></p>
+            <p id="temperature"></p>
+            <p id="wind"></p>
+            <p id="pressure"></p>
+        </div>
+    
+    </section>
+
+    
+    
+
+
+    <button class="back-to-top" onclick="scrollToTop()">Back to Top</button>
+
+    <script>
+        // Function to scroll to the top of the page
+        function scrollToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+        // Show or hide the "Back to Top" button based on scroll position
+        window.onscroll = function () {
+            showBackToTopButton();
+        };
+
+        function showBackToTopButton() {
+            var button = document.querySelector('.back-to-top');
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                button.style.display = 'block';
+            } else {
+                button.style.display = 'none';
+            }
+        }
+    </script>
+    
+
+</body>
+</html>

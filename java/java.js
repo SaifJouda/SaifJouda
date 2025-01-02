@@ -89,6 +89,31 @@ function createBlogItem(blogImg, blogTitle, blogText, blogLink) {
   document.querySelector('.blogs-section').appendChild(overa);
 }
 
+function createCourseItem(courseName)
+{
+  var courseDiv = document.createElement('div');
+  courseDiv.classList.add('course');
+
+  courseDiv.setAttribute("data-tilt", "");
+  courseDiv.setAttribute("data-tilt-scale", "1.2");
+  courseDiv.setAttribute("data-tilt-glare", "");
+  courseDiv.setAttribute("data-tilt-max-glare", "0.8");
+  courseDiv.setAttribute("data-tilt-reverse", "true");
+
+  //var roundDiv = document.createElement('div');
+  //roundDiv.classList.add('round');
+  
+  var courselabelDiv = document.createElement('div');
+  courselabelDiv.classList.add('course-label');
+  courselabelDiv.textContent = courseName;
+  
+  courseDiv.appendChild(courselabelDiv);
+  
+  //roundDiv.appendChild(technologyDiv);
+
+  document.querySelector('.course-section').appendChild(courseDiv);
+}
+
 function createProjectItem(img, projTitle, text, tech)
 {
   var projDiv = document.createElement('div');
